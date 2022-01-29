@@ -25,8 +25,8 @@ enum class StringConst(val value: String) {
 fun String.splitMessage(maxLengthMessage: Int): List<String> {
     val resultList = mutableListOf<String>()
     val message = mutableListOf<String>()
-    var index = 1
-    var counter = 1
+    var wordIndex = 1
+    var messageIndex = 1
     var lengthMessage = 0
 
     if (this.isEmpty()) throw NullPointerException(StringConst.NULL_POINTER_HANDLER.value)
@@ -42,17 +42,17 @@ fun String.splitMessage(maxLengthMessage: Int): List<String> {
             message.add(value)
             lengthMessage += value.length
             if ((
-                        lengthMessage + splitText[index].length + index.toString().length + 2 +
+                        lengthMessage + splitText[wordIndex].length + wordIndex.toString().length + 2 +
                         numberOfMessages.toString().length) > maxLengthMessage
             ) {
-                resultList.add(message.joinToString(" ") + " ${counter}/$numberOfMessages")
-                counter++
+                resultList.add(message.joinToString(" ") + " ${messageIndex}/$numberOfMessages")
+                messageIndex++
                 message.clear()
                 lengthMessage = 0
             }
-            index++
+            wordIndex++
         } catch (e: RuntimeException) {
-            if (numberOfMessages != 1) resultList.add(message.joinToString(" ") + " ${counter}/$numberOfMessages")
+            if (numberOfMessages != 1) resultList.add(message.joinToString(" ") + " ${messageIndex}/$numberOfMessages")
             else resultList.add(message.joinToString(" "))
             message.clear()
         }
