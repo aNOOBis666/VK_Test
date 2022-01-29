@@ -41,7 +41,8 @@ fun String.splitMessage(maxLengthMessage: Int): List<String> {
         try {
             message.add(value)
             lengthMessage += value.length
-            if ((lengthMessage + splitText[index].length + index.toString().length + 2 +
+            if ((
+                        lengthMessage + splitText[index].length + index.toString().length + 2 +
                         numberOfMessages.toString().length) > maxLengthMessage
             ) {
                 resultList.add(message.joinToString(" ") + " ${counter}/$numberOfMessages")
@@ -56,7 +57,6 @@ fun String.splitMessage(maxLengthMessage: Int): List<String> {
             message.clear()
         }
     }
-
     return resultList.toList()
 }
 
