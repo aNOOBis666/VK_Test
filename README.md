@@ -79,7 +79,7 @@ enum class StringConst(val value: String) {
    NULL_POINTER_HANDLER("Current meaning is null"),
 }
 ```
-
+Пример использования, результат работы на тестовых данных
 ```kotlin
 fun main() {
         val outPutShort = StringConst.SHORT_MESSAGE.value.splitMessageExtension(maxLengthMessage = 10)
