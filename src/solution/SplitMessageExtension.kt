@@ -1,3 +1,5 @@
+package solution
+
 import kotlin.math.ceil
 
 /*
@@ -14,15 +16,7 @@ import kotlin.math.ceil
 лимита и прочее)
  */
 
-
-enum class StringConst(val value: String) {
-    SHORT_MESSAGE("Lorem"),
-    MIDDLE_MESSAGE("Lorem ipsum dolor"),
-    LONG_MESSAGE("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laborious nisi ut aliquip ex ea commodo consequat."),
-    NULL_POINTER_HANDLER("Current meaning is null"),
-}
-
-fun String.splitMessage(maxLengthMessage: Int): List<String> {
+fun String.splitMessageExtension(maxLengthMessage: Int): List<String> {
     val resultList = mutableListOf<String>()
     val message = mutableListOf<String>()
     var wordIndex = 1
@@ -58,14 +52,4 @@ fun String.splitMessage(maxLengthMessage: Int): List<String> {
         }
     }
     return resultList.toList()
-}
-
-
-fun main() {
-    val outPutShort = StringConst.SHORT_MESSAGE.value.splitMessage(maxLengthMessage = 10)
-    println("result: $outPutShort")
-    val outPutMiddle = StringConst.MIDDLE_MESSAGE.value.splitMessage(maxLengthMessage = 10)
-    println("result: $outPutMiddle")
-    val outPutLong = StringConst.LONG_MESSAGE.value.splitMessage(maxLengthMessage = 50)
-    println("result: $outPutLong")
 }

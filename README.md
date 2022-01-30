@@ -34,7 +34,7 @@ fun String.splitMessage(maxLengthMessage: Int): List<String> {
     var messageIndex = 1
     var lengthMessage = 0
 
-    if (this.isEmpty()) throw NullPointerException(StringConst.NULL_POINTER_HANDLER.value)
+    if (this.isEmpty()) throw NullPointerException(solution.StringConst.NULL_POINTER_HANDLER.value)
 
     var numberOfMessages = ceil((this.length.toDouble() / maxLengthMessage.toDouble())).toInt()
     if (numberOfMessages != 1) numberOfMessages =
@@ -70,7 +70,7 @@ fun String.splitMessage(maxLengthMessage: Int): List<String> {
 Вспомогательные константы
 
 ```kotlin
-enum class StringConst(val value: String) {
+enum class solution.StringConst(val value: String) {
     SHORT_MESSAGE("Lorem"),
     MIDDLE_MESSAGE("Lorem ipsum dolor"),
     LONG_MESSAGE("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laborious nisi ut aliquip ex ea commodo consequat."),
