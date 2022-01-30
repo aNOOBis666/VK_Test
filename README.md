@@ -2,10 +2,10 @@
 
 ### Решение выполнено Легиным Денисом
 
-Язык реализации: kotlin \b
-Пример запуска и результат выполнения на тестовых данных: src/TestSplitter.kt
-Решение: src/solution/SplitMessageExtension.kt
-Используемые константы: src/solution/StringConst
+Язык реализации: kotlin
+* Пример запуска и результат выполнения на тестовых данных: src/TestSplitter.kt
+* Решение: src/solution/SplitMessageExtension.kt
+* Используемые константы: src/solution/StringConst
 ___
 
 ### Описание задачи:
