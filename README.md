@@ -2,7 +2,7 @@
 
 ### Решение выполнено Легиным Денисом
 
-Язык реализации: kotlin
+Язык реализации: kotlin \b
 Пример запуска и результат выполнения на тестовых данных: src/TestSplitter.kt
 Решение: src/solution/SplitMessageExtension.kt
 Используемые константы: src/solution/StringConst
