@@ -29,43 +29,46 @@ ___
 использовании
 
 ```kotlin
-fun String.splitMessage(maxLengthMessage: Int): List<String> {
-    val resultList = mutableListOf<String>()
-    val message = mutableListOf<String>()
-    var wordIndex = 1
-    var messageIndex = 1
-    var lengthMessage = 0
+fun String.splitMessageExtension(maxLengthMessage: Int): List<String> {
+	if (this.isEmpty()) throw NullPointerException(StringConst.NULL_POINTER_HANDLER.value)
 
-    if (this.isEmpty()) throw NullPointerException(solution.StringConst.NULL_POINTER_HANDLER.value)
+	numberOfMessages = ceil((this.length.toDouble() / maxLengthMessage.toDouble())).toInt()
+	if (numberOfMessages == IntConst.LONELY_MESSAGE.index) {
+		return listOf(this)
+	}
+	val splitText: List<String> = this.split(StringConst.EMPTY_SEPARATOR.value)
+	return updateNumberOfMessages(splitText, maxLengthMessage)
+}
+```
+Основной метод обработки исходных данных выполнен в качестве рекурсивной функции с перебором значений удовлетворяющих условию задачи
+```kotlin
+fun updateNumberOfMessages(splitText: List<String>, maxLengthMessage: Int): List<String> {
+	val localText = mutableListOf<String>()
+	var localLength = 0
+	var numOfMessageCounter = 1
+	for ((index, word) in splitText.withIndex()) {
+		try {
+			localText.add(word)
+			localLength += word.length
 
-    var numberOfMessages = ceil((this.length.toDouble() / maxLengthMessage.toDouble())).toInt()
-    if (numberOfMessages != 1) numberOfMessages =
-        ceil(((this.length + 2 * numberOfMessages).toDouble() / maxLengthMessage.toDouble())).toInt()
-
-    val splitText: List<String> = this.split(" ")
-
-    for (value in splitText) {
-        try {
-            message.add(value)
-            lengthMessage += value.length
-            if ((
-                     lengthMessage + splitText[wordIndex].length +
-                     wordIndex.toString().length + 2 +
-                     numberOfMessages.toString().length) > maxLengthMessage
-            ) {
-                resultList.add(message.joinToString(" ") + " ${messageIndex}/$numberOfMessages")
-                messageIndex++
-                message.clear()
-                lengthMessage = 0
-            }
-            wordIndex++
-        } catch (e: RuntimeException) {
-            if (numberOfMessages != 1) resultList.add(message.joinToString(" ") + " ${messageIndex}/$numberOfMessages")
-            else resultList.add(message.joinToString(" "))
-            message.clear()
-        }
-    }
-    return resultList.toList()
+			if ((localLength + splitText[index + 1].length + index + 1 + IntConst.SPECIAL_SYMBOLS.index + numberOfMessages.toString().length) >= maxLengthMessage) {
+				globalText.add(localText.joinToString(StringConst.EMPTY_SEPARATOR.value) + " ${numOfMessageCounter}/$numberOfMessages")
+				localText.clear()
+				localLength = 0
+				numOfMessageCounter++
+			}
+		} catch (e: Exception) {
+			globalText.add(localText.joinToString(StringConst.EMPTY_SEPARATOR.value) + " ${numOfMessageCounter}/$numberOfMessages")
+			localText.clear()
+			localLength = 0
+		}
+	}
+	if (globalText.size != numberOfMessages) {
+		numberOfMessages++
+		globalText.clear()
+		updateNumberOfMessages(splitText, maxLengthMessage)
+	}
+	return globalText
 }
 ```
 
